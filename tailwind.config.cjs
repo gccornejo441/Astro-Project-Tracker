@@ -1,8 +1,22 @@
 /** @type {import('tailwindcss').Config} */
+// tailwind.config.js
+const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    extend: {},
+    extend: {
+      // Set font family
+      fontFamily: {
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+      },
+      // Set theme colors (Required config!)
+      colors: {
+        primary: colors.blue,
+        secondary: colors.slate,
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
 };
