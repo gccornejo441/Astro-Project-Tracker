@@ -1,9 +1,14 @@
 <script>
     let count = 0;
+    $: doubled = count *2;
 
     const incrementCount = () => {
         count += 1;
     };
+
+    $: {
+        console.log('count changed to ' + count);
+    }
 
 </script>
 
@@ -14,3 +19,5 @@
   >
     Clicked {count} {count === 1 ? 'time' : 'times'}
   </button>
+
+  <p>{count} double is {doubled}</p>
