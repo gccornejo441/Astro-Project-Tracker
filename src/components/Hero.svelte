@@ -1,12 +1,5 @@
 <script>
-		import Info from './Info.svelte';
-
-	const pgk = {
-    name: 'svelte',
-    version: 3,
-    speed: 'blazing',
-    website: 'https://svelte.dev',
-}
+	import { onDestroy, setContext } from 'svelte';
+	import { mapbox, key } from '.mapbox.js'
 </script>
 
-<Info name={pkg.name} version={pkg.version} speed={pkg.speed} website={pkg.website}/>
