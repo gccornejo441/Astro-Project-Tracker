@@ -2,10 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import Info from "../components/Info.svelte";
 import people from "../lib/people";
+import Out from "../components/Out.svelte";
 
 ---
 
+<Layout title="home">
+<h1>Home</h1>
 
-<Layout title="Home">
-    <h1>Home</h1>
+<Out client:load />
 </Layout>
