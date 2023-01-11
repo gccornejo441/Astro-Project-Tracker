@@ -1,22 +1,27 @@
 /** @type {import('tailwindcss').Config} */
-// tailwind.config.js
-const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
-
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  darkMode: "class",
   theme: {
     extend: {
-      // Set font family
-      fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
-      },
-      // Set theme colors (Required config!)
       colors: {
-        primary: colors.blue,
-        secondary: colors.slate,
+        gray: colors.neutral,
+      },
+      fontFamily: {
+        sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
+      },
+      aspectRatio: {
+        "4/3": "4 / 3",
+        "3/2": "3 / 2",
+        "2/3": "2 / 3",
+        "9/16": "9 / 16",
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography"),
+  ],
 };

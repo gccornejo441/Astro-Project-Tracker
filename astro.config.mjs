@@ -1,13 +1,28 @@
+// https://astro.build/config
 import { defineConfig } from "astro/config";
-
-// https://astro.build/config
-import react from "@astrojs/react";
-import svelte from "@astrojs/svelte";
-
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
+import image from "@astrojs/image";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 
-// https://astro.build/config
+import { remarkReadingTime } from "./src/utils/all";
+
 export default defineConfig({
-  integrations: [react(), svelte(), tailwind()],
+  site: "https://stablo-astro.web3templates.com",
+  experimental: {
+    contentCollections: true,
+  },
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+    rehypePlugins: ["rehype-plugin-image-native-lazy-loading"],
+    extendDefaultPlugins: true,
+  },
+  integrations: [
+    tailwind(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+    mdx(),
+    sitemap(),
+  ],
 });
